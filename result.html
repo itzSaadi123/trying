@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processed Results</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc00;
+        }
+        body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('/static/images/photo.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #5e5864, #a3b0c5);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 5px solid #8a9eaf;
+        }
+
+        header img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Main Section */
+        .result-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            flex: 1 1 300px;
+            max-width: 45%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .box h3 {
+            color: #9f91ad;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .box p {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        /* Buttons */
+        .download-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #b29dc9, #697068);
+            color: white;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #a2bbe6, #69656d);
+            transform: scale(1.05);
+        }
+
+        /* Download Button inside Extracted Text Box */
+        .download-container {
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        /* Go Back Button Styling */
+        .download-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About us</a></li> 
+        </ul>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        
+        
+        <h1>Processed Results</h1>
+    </header>
+    
+    <!-- Result Section -->
+    <div class="result-section">
+        <!-- Box for Extracted Text -->
+        <div class="box">
+            <h3>Extracted Text</h3>
+            <p>{{ text }}</p>
+        </div>
+
+        <!-- Box for Profanity Status -->
+        <div class="box">
+            <h3>Profanity Status</h3>
+            <p>{{ 'True' if profanity_status else 'False' }}</p>
+            <h3>Profanity Words Detected</h3>
+            <p>{{ detected_words }}</p>
+        </div>
+    </div>
+
+    <!-- Go Back Button -->
+    <div class="download-link">
+        <a href="/" class="download-btn">Go Back</a>
+    </div>
+</body>
+<footer>
+    <p>&copy; 2025 Video Profanity Checker. All Rights Reserved.</p>
+   
+</footer>
+</html>

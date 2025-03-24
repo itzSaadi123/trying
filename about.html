@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A complete solution for bad words detection, subtitle generation, and audio extraction from videos.">
+    <meta name="keywords" content="Subtitle Generator, Profanity Detection, Audio Extraction, AI Video Tools, Content Safety">
+    <title>About | Video Profanity Detector</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333; /* Dark background */
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc00; /* Highlight effect on hover */
+        }
+
+         /* Body Layout */
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/photo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #bcbbc5; /* Dark grey */
+            color: rgb(14, 13, 13);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .main-content h2 {
+            color: #1a1a1a; /* Dark grey */
+            margin-bottom: 15px;
+        }
+
+        .main-content p {
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+
+        .main-content ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #1a1a1a; /* Dark grey */
+            color: white;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Centering the different about us section */
+        .different-about-us {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .different-about-us h2 {
+            text-align: center;
+            display: block;
+            color: #2e2e2e; /* Dark grey */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About us</a></li> 
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>About Our Website</h1>
+        <p>Your solution for profanity detection, subtitle generation, and audio extraction.</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Overview</h2>
+        <p>
+            &#128073;Our website is designed to make video content safe, accessible, and user-friendly. 
+            The tool focuses on detecting profane words in video audio, generating accurate subtitles, and providing the option to extract audio from videos.
+        </p>
+
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>Profanity Detection:</strong> Advanced AI algorithms identify and flag bad words in video audio, helping to maintain content safety for all audiences.</li>
+            <li><strong>Subtitle Generation:</strong> Automatically creates precise subtitles for videos, enhancing accessibility for the hearing impaired and non-native speakers.</li>
+            <li><strong>Audio Download:</strong> Allows users to extract and download audio from videos for various purposes, such as transcription or analysis.</li>
+            <li><strong>Customizable Filters:</strong> Users can adjust detection filters based on cultural or regional preferences.</li>
+            <li><strong>Detailed Reports:</strong> Generates reports highlighting flagged words, their timestamps, and associated video content for review.</li>
+        </ul>
+
+        <h2>Why Choose Our System?</h2>
+        <p>
+            &#128073;This system is ideal for content creators, educators, parents, and businesses who want to ensure their video content is safe, professional, and suitable for all audiences. 
+            It provides a streamlined approach to video analysis and processing, saving time and effort while searching for unethical content.
+        </p>
+
+        <h1 class="different-about-us">WHAT'S DIFFERENT ABOUT US</h1>
+        <div class="different-about-us">
+            <h2>Easy &#128526;</h2>
+            <h2>Free &#129297;</h2>
+            <h2>Accessible &#129321;</h2>
+            <h2>Online &#129312;</h2>
+            <h2>No spam or ads &#128558;</h2>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Video Profanity Checker. All Rights Reserved.</p>
+        
+    </footer>
+</body>
+</html>
