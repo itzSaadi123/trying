@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upload a video or provide a video link to detect profanity and extract text using advanced speech recognition.">
+    <meta name="keywords" content="Video, Profanity Detection, Speech Recognition, AI, Machine Learning">
+    <title>ItzSaadi</title>
+
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/photo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        header img {
+            width: 100px;
+    height: 100px; /* Ensure height is same as width for a perfect circle */
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover; /* Ensures the image fits properly */
+    margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Form Section */
+        .form-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .form-section h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .form-section form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .form-section label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .form-section input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .form-section button {
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .form-section button:hover {
+            background-color: #f84b16;
+        }
+
+        /* Live Video Button */
+        .live-video-button {
+            margin-top: 20px;
+        }
+
+        .live-video-button a {
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .live-video-button a:hover {
+            background-color: #f84b16;
+        }
+
+        /* Loading Spinner */
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #f84b16;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fun Fact */
+        #funFact {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Website Logo" />
+        <h1>AI Video Profanity Detector</h1>
+    </header>
+
+    <!-- Flash Messages -->
+    <div class="flash-message">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <main>
+        <section class="form-section">
+            <h1>Upload a Video or Provide a Link</h1>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <!-- File Upload -->
+                <label for="file">Choose a video file:</label>
+                <input type="file" name="file" id="file">
+                <br><br>
+                <!-- Link Input -->
+                <label for="link">Or paste a video link:</label>
+                <input type="text" name="link" id="link" placeholder="Enter video link here">
+                <br><br>
+                <button type="submit">Submit</button>
+            </form>
+
+        <!-- Loading and Fun Fact -->
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Please wait, your video is being processed...</p>
+        </div>
+        <!-- <div id="funFact">
+            <p>Did you know? AI technology can detect profanity with a high level of accuracy!</p>
+        </div> -->
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Video Profanity Detector. All Rights Reserved.</p>
+        <!-- <p>Powered by ItzSaadi &#128516;</p> -->
+    </footer>
+
+    <script>
+        // Show loading spinner and fun fact when form is submitted
+        document.querySelector('form').onsubmit = function() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('funFact').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
